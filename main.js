@@ -238,8 +238,8 @@ bot.action('join', async (ctx)=>{
         }
         var yt = admin[0].yt
         ctx.deleteMessage();
-        ctx.replyWithMarkdown('*👋Hi '+ctx.from.first_name+' Welcome to '+admin[0].cur+' Airdrop\n\n🔽 Choose an option from the menu below 👇*',{parse_mode:'markdown',reply_markup:{keyboard:[['👤 My Account','💼 Wallet'],['👥 Referrals','🏧 Withdrawal'] ,['🔎Information']],resize_keyboard:true}})
-        
+        ctx.replyWithMarkdown('*🔹 Subcribe our* [YouTube Channel]('+yt+')\n\n*Watch Video, Like, Share, Subscribe, Complete This Task & submit your YouTube Username With @✍️*',{disable_web_page_preview:true,reply_markup:{remove_keyboard: true}})
+        ctx.scene.enter('ytt')
     }catch(e){
         console.log(e)
 senderr(e)
@@ -454,7 +454,7 @@ getwallet.on('text', async (ctx) =>{
             ctx.replyWithMarkdown('*❌ Cancelled\n\n🔽 Choose an option from the menu below 👇*',{parse_mode:'markdown',reply_markup:{keyboard:[['👤 My Account','💼 Wallet'],['👥 Referrals','🏧 Withdrawal'],['🔎Information']],resize_keyboard:true}})
             await ctx.scene.leave(name)
             return
-        }else if(ctx.message.text.length==10){
+        }else if(ctx.message.text.length==42){
         	db.collection('info').updateOne({user:ctx.from.id},{$set:{'wallet':ctx.message.text}})
             ctx.replyWithMarkdown('_Successfully ✅ _\n\n*💼 Your '+admin[0].cur+' Wallet Address:*\n\n`'+ctx.message.text+'`',{parse_mode:'markdown',reply_markup:{keyboard:[['👤 My Account','💼 Wallet'],['👥 Referrals','🏧 Withdrawal'],['🔎Information']],resize_keyboard:true}})
             await ctx.scene.leave()
